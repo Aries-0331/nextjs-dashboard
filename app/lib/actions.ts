@@ -117,7 +117,7 @@ export async function deleteInvoice(id: string) {
   revalidatePath('/dashboard/invoices');
 }
 
-export async function authenticate(
+export async function authenticateCredential(
   prevState: string | undefined,
   formData: FormData,
 ) {
@@ -128,6 +128,24 @@ export async function authenticate(
       switch (error.type) {
         case 'CredentialsSignin':
           return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
+  }
+}
+
+export async function authenticateWithGithub() {
+  try {
+    await signIn('github');
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'OAuthAccountNotLinked':
+          return 'Account not linked with GitHub.';
+        case 'OAuthSignInError':
+          return 'Failed to sign in with GitHub.';
         default:
           return 'Something went wrong.';
       }
