@@ -1,5 +1,16 @@
-## Next.js App Router Course - Starter
+## Financial Dashboard
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
+A fullstack web application driven by Next.js + Vercel.
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+### Features
+
+- A public home page.
+- A login page.
+- Dashboard pages that are protected by authentication.
+- The ability for users to add, edit, and delete invoices.
+- Styling UI with Tailwind.
+- Use postgres as db.
+
+### Requirements
+
+- Node.js 18.17.0
